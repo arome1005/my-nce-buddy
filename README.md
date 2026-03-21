@@ -5,9 +5,7 @@
 
 Demo：[http://nce.ichochy.com](http://nce.ichochy.com)  
 
---- 
-## 截图
-![pc.jpg](https://image.ichochy.com/Blog/pc.jpg)
+
 
 ![mobile.jpg](https://image.ichochy.com/Blog/mobile.jpg)
 
