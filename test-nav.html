@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>导航测试</title>
+  <style>
+    .nav-item {
+      padding: 10px 20px;
+      margin: 5px;
+      background: #eee;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-item.active {
+      background: #ff6b35;
+      color: white;
+    }
+    .page {
+      display: none;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid #ddd;
+    }
+    .page.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <button class="nav-item active" data-page="home">首页</button>
+    <button class="nav-item" data-page="words">单词</button>
+    <button class="nav-item" data-page="listening">听力</button>
+  </nav>
+
+  <section id="page-home" class="page active">
+    <h1>首页内容</h1>
+  </section>
+
+  <section id="page-words" class="page">
+    <h1>单词页面内容</h1>
+  </section>
+
+  <section id="page-listening" class="page">
+    <h1>听力页面内容</h1>
+  </section>
+
+  <script>
+    const qs = (selector, root = document) => root.querySelector(selector);
+    const qsa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+    function navigateTo(page) {
+      console.log('切换到页面:', page);
+      
+      const navItems = qsa('.nav-item');
+      navItems.forEach(item => {
+        item.classList.toggle('active', item.dataset.page === page);
+      });
+
+      const pages = qsa('.page');
+      pages.forEach(p => {
+        const isActive = p.id === `page-${page}`;
+        p.classList.toggle('active', isActive);
+      });
+    }
+
+    function initNavigation() {
+      const navItems = qsa('.nav-item');
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const page = item.dataset.page;
+          navigateTo(page);
+        });
+      });
+    }
+
+    initNavigation();
+    console.log('导航初始化完成');
+  </script>
+</body>
+</html>

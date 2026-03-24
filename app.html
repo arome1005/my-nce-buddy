@@ -1,0 +1,1258 @@
+<!-- Author: Qim -->
+<!-- Blog: https://ichochy.com -->
+<!-- Email: Qim.it@icloud.com -->
+<!-- FileName: English Learning App -->
+<!-- Update: 2026/03/23 -->
+<!-- Copyright (c) 2026. -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="description" content="大屌哥学英语 - 听说读写全方位训练" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#f7f3ee" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f1317" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <title>大屌哥学英语 | English Learning System</title>
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+<div id="app">
+  <header class="app-header">
+    <div class="header-left">
+      <h1 class="app-logo">
+        <span class="logo-icon">ES</span>
+        <span class="logo-text">大屌哥学英语</span>
+      </h1>
+    </div>
+    
+    <nav class="main-nav" id="mainNav">
+      <button class="nav-item active" data-page="home">首页</button>
+      <button class="nav-item" data-page="chat">AI助手</button>
+      <button class="nav-item" data-page="words">单词</button>
+      <button class="nav-item" data-page="listening">听力</button>
+      <button class="nav-item" data-page="speaking">口语</button>
+      <button class="nav-item" data-page="grammar">语法</button>
+      <button class="nav-item" data-page="reading">阅读</button>
+      <button class="nav-item" data-page="courses">课程</button>
+      <button class="nav-item" data-page="stats">统计</button>
+      <button class="nav-item" data-page="settings">设置</button>
+    </nav>
+    
+    <div class="header-right">
+      <div class="user-info">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user" alt="用户头像" class="user-avatar" />
+        <span class="study-time">今日学习: <strong id="todayStudyTime">2小时15分</strong></span>
+      </div>
+      <button id="themeToggle" class="theme-toggle" aria-label="切换主题">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" />
+          <path
+            d="M10 2V4M10 16V18M18 10H16M4 10H2M15.66 15.66L14.24 14.24M5.76 5.76L4.34 4.34M15.66 4.34L14.24 5.76M5.76 14.24L4.34 15.66"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path
+            d="M17.5 11.18C16.82 11.39 16.11 11.5 15.37 11.5C11.47 11.5 8.31 8.34 8.31 4.44C8.31 3.7 8.42 2.99 8.63 2.31C5.46 3.07 3 5.92 3 9.37C3 13.27 6.16 16.43 10.06 16.43C13.51 16.43 16.36 13.97 17.12 10.8"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+
+
+  <main class="app-main">
+    <section id="page-home" class="page active">
+      <div class="home-edit-mode-bar">
+        <button id="homeEditModeToggle" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          编辑布局
+        </button>
+        <button id="resetHomeLayout" class="btn btn-outline btn-small">
+          重置布局
+        </button>
+      </div>
+      
+      <div class="task-panel draggable-container">
+        <div class="task-card draggable-card" data-card-id="task-card">
+          <div class="card-handle"></div>
+          <div class="task-header">
+            <h3>今日任务面板</h3>
+            <button class="btn btn-outline btn-small" id="setGoalBtn">设置目标</button>
+          </div>
+          <p class="task-goal" id="taskGoal">今日目标：单词20 + 听力1篇 + 口语10句 + 语法1节</p>
+        </div>
+        <div class="progress-card draggable-card" data-card-id="progress-card">
+          <div class="card-handle"></div>
+          <div class="progress-info">
+            <span class="progress-label">总进度</span>
+            <span class="progress-value" id="totalProgressValue">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="totalProgressFill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="checkin-card draggable-card" data-card-id="checkin-card">
+          <div class="card-handle"></div>
+          <div class="checkin-header">
+            <h3>打卡目标</h3>
+            <button class="btn btn-outline btn-small" id="addGoalBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              添加目标
+            </button>
+          </div>
+          <div id="checkinGoalsList" class="checkin-goals-list"></div>
+          <div class="checkin-stats">
+            <div class="checkin-stat-item">
+              <span class="checkin-stat-label">连续打卡</span>
+              <span class="checkin-stat-value" id="streakDays">0</span>
+              <span class="checkin-stat-unit">天</span>
+            </div>
+            <div class="checkin-stat-item">
+              <span class="checkin-stat-label">总打卡</span>
+              <span class="checkin-stat-value" id="totalCheckins">0</span>
+              <span class="checkin-stat-unit">次</span>
+            </div>
+            <div class="checkin-stat-item">
+              <span class="checkin-stat-label">今日已打卡</span>
+              <span class="checkin-stat-value" id="todayCheckins">0</span>
+              <span class="checkin-stat-unit">个</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-stats-card draggable-card" data-card-id="word-stats-card">
+          <div class="card-handle"></div>
+          <div class="detail-stats-header">
+            <h4>今日单词进度</h4>
+          </div>
+          <div class="detail-stats-grid">
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">目标</span>
+              <span class="detail-stat-value" id="wordGoal">20</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">已完成</span>
+              <span class="detail-stat-value" id="wordCompleted">0</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">记住</span>
+              <span class="detail-stat-value" id="wordRemembered">0</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">模糊</span>
+              <span class="detail-stat-value" id="wordFuzzy">0</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">忘记</span>
+              <span class="detail-stat-value" id="wordForgot">0</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">完成率</span>
+              <span class="detail-stat-value" id="wordCompletionRate">0%</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">记住率</span>
+              <span class="detail-stat-value" id="wordRememberRate">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-stats-card draggable-card" data-card-id="listening-stats-card">
+          <div class="card-handle"></div>
+          <div class="detail-stats-header">
+            <h4>今日听力进度</h4>
+          </div>
+          <div class="detail-stats-grid">
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">目标</span>
+              <span class="detail-stat-value" id="listeningGoal">1</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">已完成</span>
+              <span class="detail-stat-value" id="listeningCompleted">0</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">完成率</span>
+              <span class="detail-stat-value" id="listeningCompletionRate">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-stats-card draggable-card" data-card-id="speaking-stats-card">
+          <div class="card-handle"></div>
+          <div class="detail-stats-header">
+            <h4>今日口语进度</h4>
+          </div>
+          <div class="detail-stats-grid">
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">目标</span>
+              <span class="detail-stat-value" id="speakingGoal">10</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">已完成</span>
+              <span class="detail-stat-value" id="speakingCompleted">0</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">完成率</span>
+              <span class="detail-stat-value" id="speakingCompletionRate">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-stats-card draggable-card" data-card-id="grammar-stats-card">
+          <div class="card-handle"></div>
+          <div class="detail-stats-header">
+            <h4>今日语法进度</h4>
+          </div>
+          <div class="detail-stats-grid">
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">目标</span>
+              <span class="detail-stat-value" id="grammarGoal">1</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">已完成</span>
+              <span class="detail-stat-value" id="grammarCompleted">0</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">完成率</span>
+              <span class="detail-stat-value" id="grammarCompletionRate">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-stats-card draggable-card" data-card-id="reading-stats-card">
+          <div class="card-handle"></div>
+          <div class="detail-stats-header">
+            <h4>今日阅读进度</h4>
+          </div>
+          <div class="detail-stats-grid">
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">目标</span>
+              <span class="detail-stat-value" id="readingGoal">1</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">已完成</span>
+              <span class="detail-stat-value" id="readingCompleted">0</span>
+            </div>
+            <div class="detail-stat-item">
+              <span class="detail-stat-label">完成率</span>
+              <span class="detail-stat-value" id="readingCompletionRate">0%</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stats-card draggable-card" data-card-id="stats-card">
+          <div class="card-handle"></div>
+          <div class="stat-item">
+            <span class="stat-label">连续学习天数</span>
+            <span class="stat-value" id="streakDays">0天</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">总学习时长</span>
+            <span class="stat-value" id="totalStudyTime">0小时</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="learning-grid draggable-container">
+        <div class="learning-card clickable-card draggable-card" data-card-id="words-card" data-page="words">
+          <div class="card-handle"></div>
+          <div class="card-header">
+            <h2>今日单词</h2>
+          </div>
+          <div class="word-content">
+            <div class="current-word">
+              <h3 class="word-text">example</h3>
+              <p class="word-phonetic">/ɪɡˈzɑːmpl/ n. 例子，榜样</p>
+              <p class="word-meaning">参考：<br/>He set a good example for the children.</p>
+            </div>
+            <div class="word-actions">
+              <button class="btn btn-secondary" id="knowBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 6L9 17l-5-5"/>
+                </svg>
+                记住
+              </button>
+              <button class="btn btn-primary" id="dontKnowBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 9v4m0 4h.01"/>
+                  <circle cx="12" cy="12" r="10"/>
+                </svg>
+                暂存
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="learning-card clickable-card draggable-card" data-card-id="listening-card" data-page="listening">
+          <div class="card-handle"></div>
+          <div class="card-header">
+            <h2>每日听力</h2>
+          </div>
+          <div class="listening-content">
+            <div class="mini-player">
+              <button class="mini-play-btn" id="miniPlayBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+              <div class="mini-progress">
+                <span class="mini-time">0:00</span>
+                <div class="mini-bar">
+                  <div class="mini-fill" style="width: 30%"></div>
+                </div>
+                <span class="mini-duration">-0:00</span>
+              </div>
+            </div>
+            <div class="transcript-box">
+              <p class="transcript-text">
+                The transcript <span class="highlight">example</span> highlighting that <span class="highlight">not</span>cioned in, with English <span class="highlight">which</span> he comments an the same Transcript: raums at aly basic and in learning foad video and contevusal moisacritam. The bloar is wnited with
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <div class="card-header">
+            <h2>生词本</h2>
+          </div>
+          <div class="vocab-list">
+            <p class="vocab-title">今日难词列表</p>
+            <ul class="vocab-items">
+              <li>tenacious</li>
+              <li>ubiquitous</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="learning-card clickable-card" data-page="speaking">
+          <div class="card-header">
+            <h2>口语跟读</h2>
+          </div>
+          <div class="speaking-content">
+            <p class="sentence-text">Let's the sentence is a good example for the children children.</p>
+            <div class="speaking-controls">
+              <button class="record-btn" id="recordBtn">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="8"/>
+                </svg>
+                <span>录音</span>
+              </button>
+              <div class="pronunciation-score">
+                <span class="score-label">发音评分</span>
+                <div class="score-bars">
+                  <div class="score-bar" style="width: 80%; background: #22c55e;"></div>
+                  <div class="score-bar" style="width: 90%; background: #eab308;"></div>
+                  <div class="score-bar" style="width: 70%; background: #f97316;"></div>
+                  <div class="score-bar" style="width: 60%; background: #ef4444;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="learning-card clickable-card" data-page="grammar">
+          <div class="card-header">
+            <h2>语法精讲</h2>
+          </div>
+          <div class="grammar-content">
+            <div class="grammar-point">
+              <h4>语法点：现在完成时</h4>
+              <p class="grammar-explanation">
+                Present Perfect Tense 是是解课文的不同，语句弥正在的语法正法律的糊讲。<br/>
+                例如：<br/>
+                He set a good example for the children.
+              </p>
+            </div>
+            <div class="grammar-quiz">
+              <div class="quiz-item">
+                <span class="quiz-number">1.</span>
+                <span class="quiz-text">练题：What's a good example?</span>
+                <div class="quiz-options">
+                  <label class="quiz-option selected">
+                    <input type="radio" name="q1" checked/>
+                  </label>
+                </div>
+              </div>
+              <div class="quiz-item">
+                <span class="quiz-number">2.</span>
+                <span class="quiz-text">练题：Present Perfect Tense.</span>
+                <div class="quiz-options">
+                  <label class="quiz-option">
+                    <input type="radio" name="q2"/>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <div class="card-header">
+            <h2>错题本</h2>
+          </div>
+          <div class="mistake-list">
+            <p>错题+错误原因</p>
+            <p>错题+错误原因</p>
+          </div>
+        </div>
+
+        <div class="side-card">
+          <div class="card-header">
+            <h2>学习数据</h2>
+          </div>
+          <div class="data-content">
+            <p>单词掌握量</p>
+            <p>学习时长统计</p>
+            <div class="data-chart">
+              <div class="chart-bar" style="height: 40%"></div>
+              <div class="chart-bar" style="height: 60%"></div>
+              <div class="chart-bar" style="height: 50%"></div>
+              <div class="chart-bar" style="height: 70%"></div>
+              <div class="chart-bar" style="height: 80%"></div>
+              <div class="chart-bar" style="height: 90%"></div>
+              <div class="chart-bar" style="height: 75%"></div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-chat" class="page">
+      <div class="page-container">
+        <div class="chat-main-container">
+          <div class="chat-sidebar">
+            <div class="sidebar-header">
+              <button class="new-chat-btn" id="newChatBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                新建对话
+              </button>
+            </div>
+            <div class="chat-list" id="chatList"></div>
+          </div>
+          
+          <div class="chat-content-area">
+            <div class="page-header">
+              <h2>that</h2>
+              <div class="page-actions">
+                <div class="chat-mode-selector">
+                  <button class="mode-btn active" data-mode="text">文字</button>
+                  <button class="mode-btn" data-mode="voice">语音通话</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-container">
+              <div class="chat-messages" id="chatMessages">
+                <div class="chat-welcome">
+                  <div class="welcome-icon">🤖</div>
+                  <h3>Hi，我是 that！</h3>
+                  <p>我可以帮你学习英语，包括：</p>
+                  <ul>
+                    <li>📚 单词讲解和例句生成</li>
+                    <li>✍️ 作文批改和语法纠正</li>
+                    <li>🗣️ 口语练习和对话</li>
+                    <li>🎧 听力理解和分析</li>
+                    <li>📖 阅读材料解析</li>
+                  </ul>
+                  <p class="welcome-hint">开始对话吧！可以上传图片或直接语音通话。</p>
+                </div>
+              </div>
+
+              <div class="chat-input-area">
+                <div class="chat-input-toolbar">
+                  <label class="toolbar-btn" for="imageUpload" title="上传图片">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                  </label>
+                  <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
+                </div>
+                <div class="chat-input-wrapper">
+                  <textarea class="chat-input" id="chatInput" placeholder="输入你的问题..."></textarea>
+                </div>
+                <div class="chat-actions">
+                  <button class="action-btn voice-btn" id="voiceBtn" title="语音输入">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                      <line x1="12" y1="19" x2="12" y2="23"/>
+                      <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                  </button>
+                  <button class="action-btn send-btn" id="sendBtn" title="发送">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="22" y1="2" x2="11" y2="13"/>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="voice-call-container" id="voiceCallContainer" style="display: none;">
+              <div class="call-avatar">
+                <div class="avatar-circle">🤖</div>
+                <div class="call-status" id="callStatus">准备中...</div>
+              </div>
+              <div class="call-controls">
+                <button class="call-btn mute-btn" id="muteBtn">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  </svg>
+                </button>
+                <button class="call-btn end-call-btn" id="endCallBtn">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </button>
+                <button class="call-btn speaker-btn" id="speakerBtn">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-words" class="page">
+      <div class="page-container">
+        <div class="page-header">
+          <h2>单词学习</h2>
+          <div class="page-actions">
+            <div class="book-selector-words">
+              <label class="nce-header-book-select">
+                <select class="book-select" id="wordBookSelect">
+                  <option value="">选择课本</option>
+                </select>
+              </label>
+            </div>
+            <button class="btn btn-primary" id="startWordStudy">开始学习</button>
+          </div>
+        </div>
+
+        <div class="word-study-area">
+          <div class="flashcard" id="flashcard" style="display: none;">
+            <div class="card-front">
+              <h3 class="flashcard-word" id="flashcardWord">excuse</h3>
+              <p class="flashcard-phonetic" id="flashcardPhonetic">/ɪkˈskjuːz/</p>
+              <button class="btn btn-outline" id="showMeaning">显示释义</button>
+            </div>
+            <div class="card-back" style="display: none;">
+              <h3 class="flashcard-word" id="flashcardWordBack">excuse</h3>
+              <p class="flashcard-meaning" id="flashcardMeaning">v. 原谅；n. 借口</p>
+              
+              <div class="word-examples" id="wordExamples">
+                <h4 class="examples-title">课文例句</h4>
+                <div class="examples-list" id="examplesList">
+                </div>
+              </div>
+              
+              <div class="flashcard-actions">
+                <button class="btn btn-danger" id="forgetBtn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                  </svg>
+                  忘记
+                </button>
+                <button class="btn btn-warning" id="fuzzyBtn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  模糊
+                </button>
+                <button class="btn btn-success" id="rememberBtn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                  记住
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="no-words-message" id="noWordsMessage">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+            <h3>开始学习吧！</h3>
+            <p>选择想要学习的册次，点击"开始学习"按钮</p>
+          </div>
+        </div>
+
+        <div class="memory-curve-section" id="memoryCurveSection" style="display: none;">
+          <h3 class="curve-title">艾宾浩斯遗忘曲线</h3>
+          <div class="memory-curve">
+            <div class="curve-container">
+              <div class="curve-y-axis">
+                <span>100%</span>
+                <span>75%</span>
+                <span>50%</span>
+                <span>25%</span>
+                <span>0%</span>
+              </div>
+              <div class="curve-content">
+                <div class="curve-points" id="curvePoints">
+                </div>
+              </div>
+              <div class="curve-x-axis">
+                <span>今天</span>
+                <span>1天</span>
+                <span>2天</span>
+                <span>4天</span>
+                <span>7天</span>
+                <span>15天</span>
+                <span>30天</span>
+              </div>
+            </div>
+          </div>
+          <div class="study-stats">
+            <div class="stat-item">
+              <span class="stat-value" id="totalWordsStudied">0</span>
+              <span class="stat-label">已学习</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="wordsToReview">0</span>
+              <span class="stat-label">待复习</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="wordsMastered">0</span>
+              <span class="stat-label">已掌握</span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-listening" class="page">
+      <div class="page-container">
+        <div class="page-header">
+          <h2>听力训练</h2>
+          <div class="page-actions">
+            <select class="select-input" id="listeningLevelSelect">
+              <option value="beginner">初级</option>
+              <option value="intermediate">中级</option>
+              <option value="advanced">高级</option>
+            </select>
+          </div>
+        </div>
+        <div class="listening-area">
+          <div class="audio-player-full">
+            <div class="player-controls">
+              <button class="control-btn" id="prevTrack">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 20L9 12 19 4V20z"/>
+                  <path d="M5 19V5"/>
+                </svg>
+              </button>
+              <button class="play-btn-large" id="playPauseListening">
+                <svg class="play-icon" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <svg class="pause-icon" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                </svg>
+              </button>
+              <button class="control-btn" id="nextTrack">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 4l10 8-10 8V4z"/>
+                  <path d="M19 5v14"/>
+                </svg>
+              </button>
+            </div>
+            <div class="progress-container-full">
+              <span class="time-label" id="currentTimeListening">0:00</span>
+              <div class="progress-bar-full" id="progressBarListening">
+                <div class="progress-fill-full" id="progressFillListening"></div>
+              </div>
+              <span class="time-label" id="durationListening">0:00</span>
+            </div>
+            <div class="speed-control">
+              <button class="speed-btn" id="speedBtnListening">1.0x</button>
+            </div>
+          </div>
+          <div class="transcript-area">
+            <h3>听力原文</h3>
+            <div class="transcript-text" id="listeningTranscript">
+              <p>Welcome to our listening practice. Today we will talk about daily routines.</p>
+              <p>I usually wake up at 7 AM. Then I take a shower and have breakfast.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-speaking" class="page">
+      <div class="page-container">
+        <div class="page-header">
+          <h2>口语练习</h2>
+          <div class="page-actions">
+            <select class="select-input" id="speakingTopicSelect">
+              <option value="daily">日常对话</option>
+              <option value="travel">旅行</option>
+              <option value="business">商务</option>
+            </select>
+          </div>
+        </div>
+        <div class="speaking-area">
+          <div class="dialogue-box">
+            <div class="dialogue-bubble ai">
+              <p>Hello! How are you today?</p>
+            </div>
+            <div class="dialogue-bubble user">
+              <p>I'm fine, thank you!</p>
+            </div>
+          </div>
+          <div class="record-area">
+            <p class="prompt-text">请跟读：Hello! How are you today?</p>
+            <button class="record-btn-large" id="recordSpeakingBtn">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="8"/>
+              </svg>
+              <span>点击录音</span>
+            </button>
+            <div class="feedback-area" id="speakingFeedback">
+              <p class="feedback-score">发音评分：<strong>85分</strong></p>
+              <div class="waveform">
+                <div class="wave-bar" style="height: 60%"></div>
+                <div class="wave-bar" style="height: 80%"></div>
+                <div class="wave-bar" style="height: 40%"></div>
+                <div class="wave-bar" style="height: 90%"></div>
+                <div class="wave-bar" style="height: 70%"></div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-grammar" class="page">
+      <div class="page-container">
+        <div class="page-header">
+          <h2>语法学习</h2>
+          <div class="page-actions">
+            <select class="select-input" id="grammarLevelSelect">
+              <option value="beginner">初级语法</option>
+              <option value="intermediate">中级语法</option>
+              <option value="advanced">高级语法</option>
+            </select>
+          </div>
+        </div>
+        <div class="grammar-area">
+          <div class="grammar-lesson">
+            <h3 class="lesson-title">现在完成时</h3>
+            <div class="lesson-content">
+              <h4>定义</h4>
+              <p>现在完成时表示过去发生的动作对现在造成的影响或结果，或表示过去的动作或状态持续到现在。</p>
+              
+              <h4>结构</h4>
+              <p>肯定句：主语 + have/has + 动词过去分词</p>
+              <p>否定句：主语 + have/has + not + 动词过去分词</p>
+              <p>疑问句：Have/Has + 主语 + 动词过去分词？</p>
+              
+              <h4>例句</h4>
+              <p>I have finished my homework.</p>
+              <p>She hasn't come yet.</p>
+              <p>Have you seen this movie?</p>
+            </div>
+          </div>
+          <div class="grammar-exercises">
+            <h3>练习</h3>
+            <div class="exercise-item">
+              <p class="exercise-question">1. I _______ (live) here for 5 years.</p>
+              <div class="exercise-options">
+                <label><input type="radio" name="g1" /> live</label>
+                <label><input type="radio" name="g1" checked /> have lived</label>
+                <label><input type="radio" name="g1" /> lived</label>
+              </div>
+            </div>
+            <div class="exercise-item">
+              <p class="exercise-question">2. She _______ (not finish) her work yet.</p>
+              <div class="exercise-options">
+                <label><input type="radio" name="g2" /> didn't finish</label>
+                <label><input type="radio" name="g2" checked /> hasn't finished</label>
+                <label><input type="radio" name="g2" /> doesn't finish</label>
+              </div>
+            </div>
+            <button class="btn btn-primary" id="checkGrammar">提交答案</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-reading" class="page">
+      <div class="page-container">
+        <div class="page-header">
+          <h2>阅读练习</h2>
+          <div class="page-actions">
+            <select class="select-input" id="readingLevelSelect">
+              <option value="beginner">初级阅读</option>
+              <option value="intermediate">中级阅读</option>
+              <option value="advanced">高级阅读</option>
+            </select>
+          </div>
+        </div>
+        <div class="reading-area">
+          <div class="reading-text">
+            <h3>The Benefits of Reading</h3>
+            <p>Reading is a wonderful activity that brings many benefits to our lives. It not only improves our knowledge but also enhances our vocabulary and language skills.</p>
+            <p>When we read, we expose ourselves to new ideas and perspectives. This helps us develop critical thinking skills and become more open-minded individuals.</p>
+            <p>Additionally, reading can be a great way to relax and reduce stress. Getting lost in a good book can transport us to different worlds and take our minds off our daily worries.</p>
+          </div>
+          <div class="reading-questions">
+            <h3>阅读理解</h3>
+            <div class="question-item">
+              <p class="question-text">1. What is the main idea of the passage?</p>
+              <div class="question-options">
+                <label><input type="radio" name="r1" /> Reading is expensive</label>
+                <label><input type="radio" name="r1" checked /> Reading has many benefits</label>
+                <label><input type="radio" name="r1" /> Reading is difficult</label>
+              </div>
+            </div>
+            <div class="question-item">
+              <p class="question-text">2. According to the passage, what can reading help reduce?</p>
+              <div class="question-options">
+                <label><input type="radio" name="r2" /> Knowledge</label>
+                <label><input type="radio" name="r2" /> Vocabulary</label>
+                <label><input type="radio" name="r2" checked /> Stress</label>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-courses" class="page">
+      <div id="nce-app">
+        <header class="nce-header">
+          <div class="nce-header-content">
+            <h1>新概念英语</h1>
+            <p class="nce-subtitle">New Concept English</p>
+          </div>
+          <label class="nce-header-book-select">
+            <select class="book-select" id="courseBookSelect">
+              <option value="">选择课本</option>
+            </select>
+          </label>
+        </header>
+
+        <div class="nce-container">
+          <aside class="unit-list desktop-only">
+            <h2>课程列表</h2>
+            <div id="courseUnitListContainer"></div>
+          </aside>
+
+          <div class="player-column">
+            <main class="player-section">
+              <div class="book-info">
+                <img id="courseBookCover" src="" alt="课本封面" class="book-cover" />
+                <div class="unit-info">
+                  <div class="unit-title-group">
+                    <div class="book-title-row">
+                      <h2 id="courseBookName" class="book-name"></h2>
+                      <p id="courseBookLevel" class="book-level"></p>
+                    </div>
+                    <label>
+                    <select id="courseUnitSelect" class="unit-select">
+                      <option value="">选择 Unit</option>
+                    </select>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <section class="control-panel" aria-label="课程与播放控制区">
+                <div class="navigation-buttons">
+                <button id="coursePrevUnitBtn" class="nav-btn prev-btn" title="上一课">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <path d="M12 16L7 11L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                  </svg>
+                </button>
+                    <button id="coursePlayPauseBtn" class="play-btn" aria-label="播放或暂停" disabled>
+                    <svg class="play-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <svg class="pause-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                    </svg>
+                  </button>
+
+                <button id="courseNextUnitBtn" class="nav-btn next-btn" title="下一课">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <path d="M8 4L13 9L8 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <button id="courseSpeedBtn" class="speed-btn" title="播放速度">
+                  <span id="courseSpeedText">1.0x</span>
+                </button>
+                  <button id="courseToggleTranslationBtn" class="toggle-translation-btn" type="button" aria-pressed="false">
+                    中
+                  </button>
+                  <button id="coursePlayModeBtn" class="play-mode-btn" type="button" title="单句点读" aria-label="单句点读" aria-pressed="false">
+                  <svg class="mode-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <g class="single-icon">
+                      <path d="M10.4 5.1L14 9l-3.6 3.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M4.4 9h8.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                      <circle cx="4.5" cy="4.7" r="2.1" stroke="currentColor" stroke-width="1.4" />
+                      <path d="M4.2 3.8h.7v1.9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                    <g class="continuous-icon">
+                      <path d="M5 5.2h6.1c1.2 0 2.2 1 2.2 2.2v.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M11.7 3.8L13.9 6l-2.2 2.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M13 12.8H6.9c-1.2 0-2.2-1-2.2-2.2V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M6.3 15.2L4.1 13l2.2-2.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                  </svg>
+                </button>
+                </div>
+                <div class="audio-player">
+                  <audio id="courseAudioPlayer"></audio>
+                  <div class="progress-container">
+                    <div class="progress-bar" id="courseProgressBar">
+                      <div class="progress-fill" id="courseProgressFill"></div>
+                      <div class="progress-handle" id="courseProgressHandle"></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="lyrics-container" aria-label="双语歌词区">
+                <div id="courseLyricsDisplay" class="lyrics-display">
+                  <p class="placeholder">选择一个Unit开始学习...</p>
+                </div>
+              </section>
+              </main>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="goalModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>设置每日目标</h3>
+          <button class="modal-close" id="closeGoalModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="goal-setting-item">
+            <label for="goalWords">单词背诵目标</label>
+            <input type="number" id="goalWords" class="goal-input" min="1" max="500" value="20">
+          </div>
+          <div class="goal-setting-item">
+            <label for="goalListening">听力练习目标</label>
+            <input type="number" id="goalListening" class="goal-input" min="1" max="20" value="1">
+          </div>
+          <div class="goal-setting-item">
+            <label for="goalSpeaking">口语练习目标</label>
+            <input type="number" id="goalSpeaking" class="goal-input" min="1" max="100" value="10">
+          </div>
+          <div class="goal-setting-item">
+            <label for="goalGrammar">语法学习目标</label>
+            <input type="number" id="goalGrammar" class="goal-input" min="1" max="20" value="1">
+          </div>
+          <div class="goal-setting-item">
+            <label for="goalReading">阅读学习目标</label>
+            <input type="number" id="goalReading" class="goal-input" min="1" max="20" value="1">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="cancelGoalBtn">取消</button>
+          <button class="btn btn-primary" id="saveGoalBtn">保存目标</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="page-stats" class="page">
+      <div class="page-container">
+        <div class="page-header">
+          <h2>学习统计</h2>
+        </div>
+
+        <div class="stats-tabs">
+          <button class="stats-tab active" data-period="week">本周</button>
+          <button class="stats-tab" data-period="month">本月</button>
+        </div>
+
+        <div class="charts-container">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>学习进度趋势</h3>
+            </div>
+            <canvas id="trendChart" width="800" height="300"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>各技能掌握程度</h3>
+            </div>
+            <canvas id="skillsChart" width="400" height="300"></canvas>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3>单词记忆分布</h3>
+            </div>
+            <canvas id="memoryChart" width="400" height="300"></canvas>
+          </div>
+        </div>
+
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="summary-icon">📚</div>
+            <div class="summary-content">
+              <div class="summary-label">总学习天数</div>
+              <div class="summary-value" id="totalStudyDays">0</div>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">💪</div>
+            <div class="summary-content">
+              <div class="summary-label">连续学习</div>
+              <div class="summary-value" id="currentStreak">0天</div>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">🎯</div>
+            <div class="summary-content">
+              <div class="summary-label">累计单词</div>
+              <div class="summary-value" id="totalWords">0</div>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon">🏆</div>
+            <div class="summary-content">
+              <div class="summary-label">完成目标次数</div>
+              <div class="summary-value" id="goalCompleted">0</div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-settings" class="page">
+      <div class="page-container">
+        <div class="page-header">
+          <h2>设置</h2>
+        </div>
+        
+        <div class="settings-area">
+          <div class="setting-section">
+            <h3 class="setting-title">主题颜色</h3>
+            <div class="color-picker">
+              <div class="color-option" data-color="#ff6b35" style="background-color: #ff6b35;" title="橙色"></div>
+              <div class="color-option" data-color="#3b82f6" style="background-color: #3b82f6;" title="蓝色"></div>
+              <div class="color-option" data-color="#10b981" style="background-color: #10b981;" title="绿色"></div>
+              <div class="color-option" data-color="#8b5cf6" style="background-color: #8b5cf6;" title="紫色"></div>
+              <div class="color-option" data-color="#ec4899" style="background-color: #ec4899;" title="粉色"></div>
+              <div class="color-option" data-color="#f59e0b" style="background-color: #f59e0b;" title="琥珀色"></div>
+            </div>
+          </div>
+          
+          <div class="setting-section">
+            <h3 class="setting-title">英文字体</h3>
+            <select class="select-input" id="fontSelect">
+              <option value="Georgia, serif">Georgia</option>
+              <option value="'Times New Roman', serif">Times New Roman</option>
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="'Helvetica Neue', sans-serif">Helvetica Neue</option>
+              <option value="'Courier New', monospace">Courier New</option>
+              <option value="Verdana, sans-serif">Verdana</option>
+            </select>
+          </div>
+          
+          <div class="setting-section">
+            <h3 class="setting-title">字体预览</h3>
+            <div class="font-preview" id="fontPreview">
+              <p class="preview-text">The quick brown fox jumps over the lazy dog.</p>
+              <p class="preview-text-chinese">大屌哥学英语 - 新概念英语</p>
+            </div>
+          </div>
+
+          <div class="setting-section">
+            <h3 class="setting-title">数据备份与恢复</h3>
+            <p class="setting-description">导出您的学习数据进行备份，或从备份文件恢复数据</p>
+            <div class="backup-buttons">
+              <button class="btn btn-primary" id="exportDataBtn">
+                <span class="btn-icon">📤</span>
+                导出数据
+              </button>
+              <label class="btn btn-secondary" for="importDataInput">
+                <span class="btn-icon">📥</span>
+                导入数据
+              </label>
+              <input type="file" id="importDataInput" accept=".json" style="display: none;">
+            </div>
+          </div>
+
+          <div class="setting-section">
+            <h3 class="setting-title">AI配置</h3>
+            <p class="setting-description">配置AI模型以启用智能英语学习助手功能</p>
+            
+            <div class="config-group">
+              <label class="config-label" style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" id="autoSpeakAiResponse">
+                自动朗读AI回复
+              </label>
+            </div>
+            
+            <div class="ai-config-section">
+              <div class="config-group">
+                <label class="config-label">AI服务模式</label>
+                <select class="select-input" id="aiServiceMode">
+                  <option value="cloud">云端API</option>
+                  <option value="local">本地Ollama</option>
+                </select>
+              </div>
+
+              <div class="config-group" id="cloudConfig">
+                <label class="config-label">API提供商</label>
+                <select class="select-input" id="aiProvider">
+                  <option value="openai">OpenAI (GPT-4o, GPT-4)</option>
+                  <option value="anthropic">Anthropic (Claude 3.5)</option>
+                  <option value="deepseek">DeepSeek</option>
+                  <option value="qwen">通义千问</option>
+                  <option value="gemini">Google Gemini</option>
+                  <option value="custom">自定义API</option>
+                </select>
+              </div>
+
+              <div class="config-group" id="apiKeyConfig">
+                <label class="config-label">API Key</label>
+                <input type="password" class="text-input" id="aiApiKey" placeholder="输入您的API Key">
+              </div>
+
+              <div class="config-group" id="apiUrlConfig">
+                <label class="config-label">API Base URL</label>
+                <input type="text" class="text-input" id="aiApiUrl" placeholder="https://api.openai.com/v1">
+              </div>
+
+              <div class="config-group" id="modelConfig">
+                <label class="config-label">模型名称</label>
+                <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-2);">
+                  <select class="select-input" id="aiModel" style="flex: 1;">
+                  </select>
+                  <button class="btn btn-outline btn-small" id="deleteModelBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+                <div style="display: flex; gap: var(--space-2);">
+                  <input type="text" class="text-input" id="newModelInput" placeholder="输入新模型名称，例如：gemini-2.0-flash-exp" style="flex: 1;">
+                  <button class="btn btn-primary btn-small" id="addModelBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    添加
+                  </button>
+                </div>
+              </div>
+
+              <div class="config-group" id="ollamaConfig" style="display: none;">
+                <label class="config-label">Ollama地址</label>
+                <input type="text" class="text-input" id="ollamaUrl" placeholder="http://localhost:11434">
+              </div>
+
+              <div class="config-group" id="ollamaModelConfig" style="display: none;">
+                <label class="config-label">Ollama模型</label>
+                <select class="select-input" id="ollamaModel">
+                  <option value="">加载中...</option>
+                </select>
+                <button class="btn btn-outline btn-small" id="refreshOllamaModels" style="margin-top: 5px;">刷新模型</button>
+              </div>
+
+              <div class="config-group">
+                <button class="btn btn-primary" id="testAiConnection">
+                  测试连接
+                </button>
+                <span class="connection-status" id="connectionStatus"></span>
+              </div>
+
+              <div id="testErrorDetails" style="display: none; margin-top: var(--space-3); padding: var(--space-3); background: var(--danger-2); border: 1px solid var(--danger-1); border-radius: var(--radius-md);">
+                <strong style="color: var(--danger-1);">连接失败详情：</strong>
+                <pre id="testErrorContent" style="margin-top: var(--space-2); white-space: pre-wrap; font-size: 12px; color: var(--ink-2);"></pre>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="goalModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="goalModalTitle">添加目标</h3>
+        <button class="modal-close" id="closeGoalModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">目标名称</label>
+          <input type="text" class="text-input" id="goalName" placeholder="例如：背20个单词">
+        </div>
+        <div class="form-group">
+          <label class="form-label">目标描述（可选）</label>
+          <textarea class="text-input" id="goalDescription" rows="3" placeholder="描述一下这个目标..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">目标类型</label>
+          <select class="select-input" id="goalType">
+            <option value="daily">每日目标</option>
+            <option value="weekly">每周目标</option>
+            <option value="custom">自定义</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelGoalBtn">取消</button>
+        <button class="btn btn-primary" id="saveGoalBtn">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <span>©2026 大屌哥学英语.</span>
+  </footer>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
